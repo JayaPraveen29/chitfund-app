@@ -1,0 +1,341 @@
+/* Main Content */
+.chitview-container {
+  flex: 1;
+  padding: 30px;
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.chitview-heading {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Banner */
+.chitview-banner {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.chitview-banner--error {
+  background-color: #fdecea;
+  color: #c0392b;
+  border: 1px solid #e74c3c;
+}
+
+/* Controls */
+.chitview-controls {
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chitview-controls-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.chitview-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chitview-field--grow {
+  flex: 1;
+  min-width: 200px;
+}
+
+.chitview-filter-label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.chitview-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.chitview-search-icon {
+  position: absolute;
+  left: 12px;
+  color: #7f8c8d;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.chitview-input,
+.chitview-select {
+  padding: 10px 15px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #2c3e50;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.chitview-search-input {
+  padding-left: 38px;
+}
+
+.chitview-input:focus,
+.chitview-select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* Stats row */
+.chitview-stats-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #dfe6e9;
+}
+
+.chitview-stat {
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+.chitview-stat strong {
+  color: #2980b9;
+}
+
+/* Buttons */
+.chitview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+  white-space: nowrap;
+  height: fit-content;
+  align-self: flex-end;
+}
+
+.chitview-btn--clear {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.chitview-btn--clear:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Table */
+.chitview-table-wrapper {
+  overflow-x: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dfe6e9;
+  margin-bottom: 30px;
+}
+
+.chitview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.chitview-table thead {
+  background-color: #2c3e50;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.chitview-table th {
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.chitview-table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.chitview-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.chitview-table td {
+  padding: 10px 8px;
+  border: 1px solid #dfe6e9;
+  color: #2c3e50;
+  white-space: nowrap;
+}
+
+.chitview-empty {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 40px !important;
+  font-size: 1rem;
+}
+
+.chitview-numeric {
+  text-align: right;
+}
+
+/* Selected row */
+.chitview-row {
+  cursor: pointer;
+}
+
+.chitview-row--selected {
+  background-color: #eaf4fb !important;
+  outline: 2px solid #3498db;
+  outline-offset: -2px;
+}
+
+/* Action buttons in table */
+.chitview-actions {
+  white-space: nowrap;
+}
+
+.chitview-icon-btn {
+  padding: 6px 10px;
+  margin: 0 3px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.2s, opacity 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chitview-icon-btn--view {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+.chitview-icon-btn--view:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.chitview-icon-btn--delete {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.chitview-icon-btn--delete:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* Detail section */
+.chitview-detail {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.chitview-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chitview-detail-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.chitview-detail-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 20px 0 12px;
+}
+
+/* Member link */
+.chitview-member-link {
+  background: none;
+  border: none;
+  color: #2980b9;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.chitview-member-link:hover {
+  color: #1a5276;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chitview-container {
+    padding: 20px;
+  }
+
+  .chitview-controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chitview-field--grow {
+    min-width: unset;
+  }
+
+  .chitview-table {
+    font-size: 0.85rem;
+  }
+
+  .chitview-table th,
+  .chitview-table td {
+    padding: 8px 4px;
+  }
+}
+
+/* Scrollbar */
+.chitview-table-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.chitview-table-wrapper::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 5px;
+}
+
+.chitview-table-wrapper::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 5px;
+}
+
+.chitview-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}

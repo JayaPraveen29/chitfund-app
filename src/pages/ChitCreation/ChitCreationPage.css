@@ -1,0 +1,285 @@
+/* ── Container ── */
+.chit-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.chit-heading {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+/* ── Banners ── */
+.banner {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.banner--error { background: #ffeaea; border: 1px solid #e74c3c; color: #c0392b; }
+.banner--success { background: #eafaf1; border: 1px solid #27ae60; color: #1e8449; }
+.banner-link { text-decoration: underline; cursor: pointer; margin-left: 6px; }
+
+/* ── Top inputs ── */
+.chit-top-inputs {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+.top-input-wrapper { display: flex; flex-direction: column; gap: 5px; }
+.top-label { font-size: 13px; font-weight: bold; color: #2c3e50; }
+.top-select {
+  padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px;
+  font-size: 14px; background: white; color: black; cursor: pointer;
+}
+.top-select:focus { outline: none; border-color: #2196F3; }
+
+/* ── Form wrapper ── */
+.form-wrapper {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-divider { border: none; border-top: 1px solid #ddd; margin: 20px 0; }
+
+.form-section-title { color: #2c3e50; margin-bottom: 8px; font-size: 20px; }
+.form-section-subtitle { color: #666; font-size: 13px; margin-bottom: 15px; }
+
+/* ── Entry grid ── */
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.entry-input { display: flex; flex-direction: column; min-width: 0; }
+.entry-input--wide { grid-column: span 2; }
+
+.entry-label {
+  font-size: 13px; font-weight: bold; margin-bottom: 5px;
+  color: #2c3e50; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ── Field inputs ── */
+.field-input {
+  padding: 8px 10px; border: 1px solid #ddd; border-radius: 4px;
+  font-size: 14px; background: white; color: black; width: 100%;
+  transition: border-color 0.2s;
+}
+.field-input:focus { outline: none; border-color: #2196F3; }
+.field-input--error { border-color: #e74c3c; }
+.field-input--error:focus { border-color: #e74c3c; }
+.field-input--readonly { background: #f0f0f0; color: #666; cursor: not-allowed; }
+
+/* ── Labels ── */
+.required { color: #e74c3c; margin-left: 2px; }
+.optional {
+  font-size: 10px; font-weight: normal; color: #999;
+  background: #f0f0f0; border-radius: 3px; padding: 1px 5px; margin-left: 5px;
+}
+.error-msg { color: #e74c3c; font-size: 12px; margin-top: 3px; }
+
+/* ── Member card ── */
+.member-card {
+  background: white; border: 1px solid #ddd; border-radius: 8px;
+  padding: 15px; margin-bottom: 15px; position: relative;
+}
+.member-card-title { color: #2c3e50; margin: 0 0 15px 0; }
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.remove-btn {
+  position: absolute; top: 10px; right: 10px;
+  background: #ff4d4d; color: white; border: none; border-radius: 4px;
+  cursor: pointer; padding: 5px 10px;
+  display: flex; align-items: center; gap: 5px; font-size: 12px;
+  transition: background 0.3s;
+}
+.remove-btn:hover { background: #e60000; }
+
+.add-member-btn {
+  background: #2196F3; color: white; border: none; padding: 10px 20px;
+  border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px; font-size: 14px;
+  transition: background 0.3s;
+}
+.add-member-btn:hover { background: #1976D2; }
+
+/* ── Summary box ── */
+.summary-box {
+  background: #2c3e50; color: white; padding: 20px;
+  border-radius: 8px; margin-top: 20px;
+}
+.summary-content {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; flex-wrap: wrap; gap: 20px;
+}
+.summary-title { margin: 0 0 12px; color: white; font-size: 16px; }
+.summary-line { margin: 6px 0; font-size: 14px; }
+.summary-right { text-align: right; }
+.summary-grand-total { color: #2ecc71; margin: 8px 0 4px; font-size: 28px; }
+.summary-mismatch {
+  background: rgba(231,76,60,0.2); border: 1px solid #e74c3c;
+  padding: 6px 10px; border-radius: 4px; font-size: 13px;
+  color: #ff8a80; margin-top: 8px;
+}
+
+/* ── Submit button ── */
+.submit-btn {
+  background: #27ae60; color: white; border: none; padding: 15px;
+  border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;
+  width: 100%; margin-top: 20px; transition: background 0.3s;
+}
+.submit-btn:hover { background: #229954; }
+.submit-btn--disabled { background: #95a5a6 !important; cursor: not-allowed !important; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .entry-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .member-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .chit-heading { font-size: 24px; }
+  .entry-grid, .member-grid { grid-template-columns: 1fr; }
+  .entry-input--wide { grid-column: span 1; }
+  .summary-content { flex-direction: column; }
+  .summary-right { text-align: left; }
+  .form-wrapper { padding: 15px; }
+}
+
+/* ── Paste these styles into ChitCreationPage.css ── */
+
+/* Combo wrapper — text input + arrow button side by side */
+.chit-combo {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.chit-combo:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.chit-combo--error {
+  border-color: #ef4444;
+}
+
+.chit-combo--error:focus-within {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* Text input takes all remaining space */
+.chit-combo__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  background: transparent;
+  color: inherit;
+  min-width: 0;
+}
+
+/* Thin vertical divider between input and arrow */
+.chit-combo__divider {
+  width: 1px;
+  height: 24px;
+  background: #d1d5db;
+  flex-shrink: 0;
+}
+
+/* Arrow button */
+.chit-combo__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.chit-combo__arrow:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* Dropdown list */
+.chit-combo__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 999;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.chit-combo__dropdown-item {
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.1s;
+}
+
+.chit-combo__dropdown-item:hover {
+  background: #f0f4ff;
+}
+
+.chit-combo__dropdown-item--active {
+  background: #eef2ff;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.chit-combo__dropdown-item--empty {
+  color: #9ca3af;
+  cursor: default;
+  font-style: italic;
+}
+
+.chit-combo__dropdown-item--empty:hover {
+  background: transparent;
+}
+
+/* Chit number badge inside dropdown */
+.chit-combo__dropdown-no {
+  font-size: 0.78rem;
+  background: #e0e7ff;
+  color: #4338ca;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-weight: 600;
+  flex-shrink: 0;
+}

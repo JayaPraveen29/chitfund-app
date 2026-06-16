@@ -1,0 +1,180 @@
+/* MemberPaymentSchedule.css */
+
+/* ── Back button ── */
+.mps-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+  transition: opacity 0.15s;
+}
+
+.mps-back-btn:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+/* ── Subheading ── */
+.mps-subheading {
+  font-size: 13px;
+  color: #6b7280;
+  margin: -8px 0 22px;
+  letter-spacing: 0.01em;
+}
+
+/* ── Cell inputs — force light background on ALL input types ── */
+.mps-pay-field,
+input.mps-pay-field,
+input[type="number"].mps-pay-field,
+input[type="date"].mps-pay-field {
+  width: 100px;
+  padding: 6px 8px;
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: right;
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none !important;
+
+  /* Force override any inherited dark theme */
+  color-scheme: light;
+}
+
+.mps-pay-field--date,
+input[type="date"].mps-pay-field {
+  width: 136px;
+  text-align: left;
+}
+
+.mps-pay-field:hover:not(:focus),
+input.mps-pay-field:hover:not(:focus) {
+  border-color: #9ca3af !important;
+}
+
+.mps-pay-field:focus,
+input.mps-pay-field:focus {
+  outline: none;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 2.5px rgba(37, 99, 235, 0.13) !important;
+}
+
+/* Remove number input spinners */
+.mps-pay-field::-webkit-outer-spin-button,
+.mps-pay-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.mps-pay-field[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Fix date input calendar icon color in dark mode */
+.mps-pay-field::-webkit-calendar-picker-indicator {
+  filter: none;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* ── Force light inputs even when OS/browser prefers dark mode ──
+   A separate global stylesheet has a `@media (prefers-color-scheme: dark)`
+   rule on `.mps-pay-field` that repaints it dark. This block beats it by
+   using a higher-specificity selector (two classes) plus !important, which
+   wins regardless of source order. ── */
+@media (prefers-color-scheme: dark) {
+  .chitview-table-wrapper .mps-pay-field,
+  table.chitview-table .mps-pay-field {
+    background-color: #ffffff !important;
+    border-color: #d1d5db !important;
+    color: #111827 !important;
+  }
+}
+
+/* ── Paid vs Due status badges ── */
+.mps-late {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 99px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+
+.mps-early {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 99px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+
+.mps-ontime {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 99px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+
+/* ── Interest cell coloring ── */
+.mps-interest-zero {
+  color: #9ca3af;
+}
+
+.mps-interest-pos {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+/* ── Saving indicator ── */
+.mps-saving-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .mps-pay-field,
+  input.mps-pay-field {
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .mps-pay-field--date,
+  input[type="date"].mps-pay-field {
+    width: 110px;
+  }
+}
