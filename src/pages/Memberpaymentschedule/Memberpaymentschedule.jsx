@@ -6,15 +6,11 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import "../ViewChitData/ViewChitData.css";
 import "./MemberPaymentSchedule.css";
 
-// Interest is charged only on a shortfall (amount payable - amount paid)
-// and only for the number of days the payment was late, at 24% per annum.
+
 const ANNUAL_INTEREST_RATE = 0.24;
 const DAILY_RATE           = ANNUAL_INTEREST_RATE / 365;
 const DAY_MS                = 24 * 60 * 60 * 1000;
 
-// Inline style object applied to EVERY input — kept as a baseline,
-// but the .mps-pay-field class (with !important rules) is what
-// actually wins against the global dark theme.
 const INPUT_STYLE = {
   backgroundColor: "#ffffff",
   color: "#111827",
