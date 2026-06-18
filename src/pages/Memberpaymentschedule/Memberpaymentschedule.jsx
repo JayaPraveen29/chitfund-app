@@ -6,9 +6,11 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import "../ViewChitData/ViewChitData.css";
 import "./MemberPaymentSchedule.css";
 
-const INTEREST_RATE = 0.02;
-const DAILY_RATE   = INTEREST_RATE / 30;
-const DAY_MS       = 24 * 60 * 60 * 1000;
+// Interest is charged only on a shortfall (amount payable - amount paid)
+// and only for the number of days the payment was late, at 24% per annum.
+const ANNUAL_INTEREST_RATE = 0.24;
+const DAILY_RATE           = ANNUAL_INTEREST_RATE / 365;
+const DAY_MS                = 24 * 60 * 60 * 1000;
 
 // Inline style object applied to EVERY input — kept as a baseline,
 // but the .mps-pay-field class (with !important rules) is what
@@ -53,11 +55,12 @@ const daysBetween = (paidDate, dueDate) => {
   return Math.round((a - b) / DAY_MS);
 };
 
+// interest = (amountPayable - amountPaid) * 24% / 365 * delayDays
+// No interest accrues unless the payment was actually late.
 const calcInterest = (amountPayable, amountPaid, lateDays) => {
-  const shortfall         = Math.max(0, amountPayable - amountPaid);
-  const shortfallInterest = shortfall * INTEREST_RATE;
-  const lateInterest      = lateDays > 0 ? amountPaid * DAILY_RATE * lateDays : 0;
-  return { shortfallInterest, lateInterest, total: shortfallInterest + lateInterest };
+  const shortfall = Math.max(0, amountPayable - amountPaid);
+  const total      = lateDays > 0 ? shortfall * DAILY_RATE * lateDays : 0;
+  return { total };
 };
 
 export default function MemberPaymentSchedule() {
@@ -185,13 +188,7 @@ export default function MemberPaymentSchedule() {
                 const diff     = row.amountPaidDate ? daysBetween(row.amountPaidDate, dueDate) : null;
                 const lateDays = diff !== null && diff > 0 ? diff : 0;
 
-                const interest = diff !== null
-                  ? calcInterest(amountPayable, amountPaid, lateDays)
-                  : {
-                      shortfallInterest: Math.max(0, amountPayable - amountPaid) * INTEREST_RATE,
-                      lateInterest: 0,
-                      total: Math.max(0, amountPayable - amountPaid) * INTEREST_RATE,
-                    };
+                const interest = calcInterest(amountPayable, amountPaid, lateDays);
 
                 let diffLabel = "—";
                 let diffClass = "";
