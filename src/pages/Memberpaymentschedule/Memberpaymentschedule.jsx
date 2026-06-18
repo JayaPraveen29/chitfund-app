@@ -4,7 +4,7 @@ import { HiArrowLeft } from "react-icons/hi2";
 import { db } from "../../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import "../ViewChitData/ViewChitData.css";
-import "./MemberPaymentSchedule.css";
+import "./Memberpaymentschedule.css";
 
 
 const ANNUAL_INTEREST_RATE = 0.24;
