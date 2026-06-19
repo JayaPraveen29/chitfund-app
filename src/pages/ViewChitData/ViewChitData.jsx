@@ -192,14 +192,15 @@ export default function ViewChitData() {
               <th>Installment Amt</th>
               <th>Total Value</th>
               <th>Start Date</th>
+              <th>End Date</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan={10} className="chitview-empty">Loading chits…</td></tr>
+              <tr><td colSpan={11} className="chitview-empty">Loading chits…</td></tr>
             ) : filteredChits.length === 0 ? (
-              <tr><td colSpan={10} className="chitview-empty">No chits found. Try adjusting your filters.</td></tr>
+              <tr><td colSpan={11} className="chitview-empty">No chits found. Try adjusting your filters.</td></tr>
             ) : (
               filteredChits.map((c, idx) => (
                 <tr
@@ -216,6 +217,7 @@ export default function ViewChitData() {
                   <td className="chitview-numeric">{formatINR(c.installmentAmount)}</td>
                   <td className="chitview-numeric">{formatINR(c.totalChitValue)}</td>
                   <td>{formatDate(c.startDate)}</td>
+                  <td>{formatDate(c.endDate)}</td>
                   <td className="chitview-actions">
                     <button
                       className="chitview-icon-btn chitview-icon-btn--view"
@@ -260,6 +262,7 @@ export default function ViewChitData() {
                   <th>No. of Installments</th>
                   <th>Installment Amount</th>
                   <th>Start Date</th>
+                  <th>End Date</th>
                   <th>Financial Year</th>
                   <th>Total Chit Value</th>
                 </tr>
@@ -271,6 +274,7 @@ export default function ViewChitData() {
                   <td className="chitview-numeric">{selectedChit.noOfInstallments ?? "—"}</td>
                   <td className="chitview-numeric">{formatINR(selectedChit.installmentAmount)}</td>
                   <td>{formatDate(selectedChit.startDate)}</td>
+                  <td>{formatDate(selectedChit.endDate)}</td>
                   <td>{selectedChit.financialYear || "—"}</td>
                   <td className="chitview-numeric">{formatINR(selectedChit.totalChitValue)}</td>
                 </tr>

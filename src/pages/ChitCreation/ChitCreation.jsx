@@ -35,6 +35,7 @@ export default function ChitCreationPage() {
   const [noOfMembers, setNoOfMembers] = useState("");
   const [installmentAmount, setInstallmentAmount] = useState("");
   const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [headerErrors, setHeaderErrors] = useState({});
 
   const [members, setMembers] = useState([blankMember()]);
@@ -44,6 +45,7 @@ export default function ChitCreationPage() {
   const mismatch = instNum > 0 && membNum > 0 && instNum !== membNum;
   const totalChitValue = parseNum(installmentAmount) * instNum;
   const filledMembersCount = members.filter((m) => m.name.trim() !== "").length;
+  const dateOrderInvalid = startDate && endDate && endDate < startDate;
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -109,6 +111,7 @@ export default function ChitCreationPage() {
     setNoOfMembers(String(chit.noOfMembers || ""));
     setInstallmentAmount(String(chit.installmentAmount || ""));
     setStartDate(chit.startDate || "");
+    setEndDate(chit.endDate || "");
 
     const loadedMembers = (chit.members || []).map((m) => ({
       id: Date.now() + Math.random(),
@@ -153,6 +156,10 @@ export default function ChitCreationPage() {
       hErr.noOfInstallments = `Installments (${instNum}) must equal members (${membNum}).`;
       valid = false;
     }
+    if (dateOrderInvalid) {
+      hErr.endDate = "End date cannot be before start date.";
+      valid = false;
+    }
     setHeaderErrors(hErr);
 
     const updatedMembers = members.map((m) => {
@@ -186,6 +193,7 @@ export default function ChitCreationPage() {
         installmentAmount: parseNum(installmentAmount),
         totalChitValue,
         startDate,
+        endDate,
         members: members.map(({ id, _errors, ...rest }) => rest),
       };
 
@@ -215,7 +223,7 @@ export default function ChitCreationPage() {
   const resetForm = () => {
     setSelectedChitId("");
     setChitName(""); setNoOfInstallments(""); setNoOfMembers("");
-    setInstallmentAmount(""); setStartDate("");
+    setInstallmentAmount(""); setStartDate(""); setEndDate("");
     setHeaderErrors({}); setGlobalError(""); setSubmitted(false);
     setMembers([blankMember()]);
   };
@@ -376,8 +384,27 @@ export default function ChitCreationPage() {
             <input
               className="field-input" type="date"
               value={startDate} min="1000-01-01" max="9999-12-31"
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={(e) => {
+                setStartDate(e.target.value);
+                setHeaderErrors((p) => ({ ...p, endDate: "" }));
+              }}
             />
+          </div>
+
+          <div className="entry-input">
+            <label className="entry-label">End Date</label>
+            <input
+              className={`field-input ${headerErrors.endDate ? "field-input--error" : ""}`}
+              type="date"
+              value={endDate} min={startDate || "1000-01-01"} max="9999-12-31"
+              onChange={(e) => {
+                setEndDate(e.target.value);
+                setHeaderErrors((p) => ({ ...p, endDate: "" }));
+              }}
+            />
+            {headerErrors.endDate && (
+              <span className="error-msg">{headerErrors.endDate}</span>
+            )}
           </div>
 
         </div>
